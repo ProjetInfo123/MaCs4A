@@ -21,11 +21,24 @@ def deter(mat) :
     det=LA.det(mat)
     return det
 
-def normaliser(v):
+#def normaliser(v):
 
 
 
 def orthonormaliser(mat):
+    m,n=mat.shape
+    u=[]
+    t=mat[:,0]/np.vdot(mat[:,0],mat[:,0])
+    u.append(t)
+    for i in range(1,n) :
+        vect=mat[:,i]
+        e=vect
+        for j in range(0,i):
+            v=u[j]*np.vdot(u[j],vect)
+            e=e-v
+        o=e/np.vdot(e,e)
+        u.append(o)
+    return u
 
 
 print(A)
@@ -43,4 +56,7 @@ print(R)
 B =  np.array([[2,-2,1], [-2,2,0],[1,1,2]])
 print(B)
 print(deter(B))
-print(orthonormaliser(B))
+bon=orthonormaliser(B)
+n=bon
+for i in range(0,len(bon)) :
+    print(bon[i])#commparer avec les vrais résultats pour savoir si la méthodes est correcte

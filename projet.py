@@ -9,6 +9,7 @@ from scipy import linalg as LA
 
 
 
+
 def vect_alea(n):
     A= 101*np.random.rand(n,n)
     return A
@@ -28,15 +29,16 @@ def deter(mat) :
 def orthonormaliser(mat):
     m,n=mat.shape
     u=[]
-    t=mat[:,0]/np.vdot(mat[:,0],mat[:,0])
+    t=mat[:,0]/(np.vdot(mat[:,0],mat[:,0]))**0.5
     u.append(t)
     for i in range(1,n) :
         vect=mat[:,i]
         e=vect
         for j in range(0,i):
-            v=u[j]*np.vdot(u[j],vect)
-            e=e-v
-        o=e/np.vdot(e,e)
+            v=(np.vdot(u[j],vect))
+            w=u[j]*v
+            e=e-w
+        o=e/(np.vdot(e,e))**0.5
         u.append(o)
     return u
 
@@ -54,9 +56,10 @@ print(R)
 
 
 B =  np.array([[2,-2,1], [-2,2,0],[1,1,2]])
+#B =  np.array([[2,-2,1], [-2,2,1],[1,0,2]])
 print(B)
 print(deter(B))
 bon=orthonormaliser(B)
 n=bon
 for i in range(0,len(bon)) :
-    print(bon[i])#commparer avec les vrais résultats pour savoir si la méthodes est correcte
+    print(bon[i])

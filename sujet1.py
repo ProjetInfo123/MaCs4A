@@ -40,7 +40,9 @@ m1=pluspetitque(100, 0, 0)
 m2=pluspetitque(100,m1,1)
 m3=pluspetitque(100, m2, 2)
 
-
+m1=7
+m2=11
+m3=13
 
 
 def restechinois(m1,m2,m3):
@@ -48,9 +50,11 @@ def restechinois(m1,m2,m3):
     M1=M/m1
     M2=M/m2
     M3=M/m3
-    y1=(1/M1)%m1
+    
+    y1=(1/M1)%m1#implémenter l'algorithme d'Euclide étendu car c'est faux sinon pour les y
     y2=(1/M2)%m2
     y3=(1/M3)%m3
+    print(y1)
     a1=random.randint(1,m1-1)
     print("a1 ",a1)
     print("\n")
@@ -60,7 +64,7 @@ def restechinois(m1,m2,m3):
     a3=random.randint(1,m3-1)
     print("a3 ",a3)
     print("\n")
-    res = (a1*M1*y1)+(a2*M2*y2)+(a3*M3*y3)
+    res = ((a1*M1*y1)+(a2*M2*y2)+(a3*M3*y3))%M
     return res
 
 print(restechinois(m1,m2,m3))

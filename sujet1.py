@@ -35,7 +35,7 @@ def pluspetitque(n):
     return liste
 
 
-print(pluspetitque(150)
+print(pluspetitque(150))
 
 def algoEuclide(b,n):
     n2=n
@@ -60,15 +60,16 @@ def algoEuclide(b,n):
     else :
         return v
 
-def restechinois(liste,n):
-    M=0
+def restechinois(liste):
+    M=1
     x=0
+    n=len(liste)
     for i in liste:
         M=M*i
     for i in range(1,n):
         m=liste[i]
         N=M/m
-        y=algoEuclide(M,m)
+        y=algoEuclide(N,m)
         a=randint(1,m-1)
         x=x+(a*N*y)
     x=x%M
@@ -83,3 +84,6 @@ def estIrreductible(p):
             return 1
         else:
             return 0
+
+
+print(restechinois([7,11,13]))

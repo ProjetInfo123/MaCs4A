@@ -87,3 +87,22 @@ def estIrreductible(p):
 
 
 print(restechinois([7,11,13]))
+
+
+def creerpoly():
+    x3=randint(-10,10)
+    x2=randint(-10,10)
+    x1=randint(-10,10)
+    x=randint(-10,10)
+    p=nppol(x,x1,x2,x3)
+    return p
+
+
+def listepoly(n):
+    liste = []
+    for i in range (1,n):
+        p=creerpoly()
+        if(estIrreductible(p)==1):
+            liste.append(p)
+          
+    return liste

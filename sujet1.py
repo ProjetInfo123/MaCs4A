@@ -94,7 +94,7 @@ def estIrreductible(p):
 
 print(restechinois(pluspetitque(20)))
 
-
+#méthode qui crée un polynome
 def creerpoly():
     x3=randint(-10,10)
     x2=randint(-10,10)
@@ -103,7 +103,7 @@ def creerpoly():
     p=nppol(x,x1,x2,x3)
     return p
 
-
+#méthode qui remplit une liste de polynome irréductible
 def listepoly(n):
     liste = []
     for i in range (1,n):

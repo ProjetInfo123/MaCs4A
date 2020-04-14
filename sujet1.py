@@ -2,7 +2,7 @@
 """
 Created on Mon Mar 16 18:30:25 2020
 
-@author: Thomas
+@author: Azeddine ASSAGHIR & Thomas EGUIENTA
 """
 
 
@@ -10,6 +10,7 @@ Created on Mon Mar 16 18:30:25 2020
 from random import *
 import numpy.polynomial.polynomial as nppol
 
+#fonction qui renvoie 1 si le nombre n est premier et 0 sinon
 def premier(n):
     x=0
     for i in range(2, n):
@@ -21,22 +22,22 @@ def premier(n):
     else :
         return 1
 
-print(premier(97))
 
-
+#méthode qui renvoie tout les nombres premiers inférieurs à n
 def pluspetitque(n):
     liste = []
-    print("Les nombres premiers inférieurs à ",n," sont ")
-    for i in range (1,n):
+    print("Les nombres premiers inférieurs à ",n," sont :")
+    for i in range (2,n):
         if(premier(i)==1):
                 liste.append(i)
-                print(i)
-                print("\n")
+                print(i," ")
+
+    print("\n")
     return liste
 
 
-print(pluspetitque(150))
 
+#fontion qui va appliquer l'algorithme d'Euclide pour trouver l'inverse modulo d'un nombre représenté par b, la fonction renvoie 0 s'il n'y en pas
 def algoEuclide(b,n):
     n2=n
     u=0
@@ -60,6 +61,7 @@ def algoEuclide(b,n):
     else :
         return v
 
+#méthode qui applique l'algorithme du reste chinois en fonction d'une liste de nombre premiers.
 def restechinois(liste):
     M=1
     x=0
@@ -73,9 +75,13 @@ def restechinois(liste):
         a=randint(1,m-1)
         x=x+(a*N*y)
     x=x%M
+    print("Le reste chinois est de la liste : ")
+    for i in range(0,len(liste)) :
+        print(liste[i])
+    print("est :")
     return x
 
-
+#méthode qui renvoie 1 si le polynome p est irréduction et 0 sinon
 def estIrreductible(p):
     if(p.degree()==1):
         return 1
@@ -86,7 +92,7 @@ def estIrreductible(p):
             return 0
 
 
-print(restechinois([7,11,13]))
+print(restechinois(pluspetitque(20)))
 
 
 def creerpoly():
@@ -104,5 +110,5 @@ def listepoly(n):
         p=creerpoly()
         if(estIrreductible(p)==1):
             liste.append(p)
-          
+
     return liste

@@ -2,30 +2,25 @@
 """
 Created on Thu Mar 12 17:13:52 2020
 
-@author: Azeddine
+@author: Azeddine ASSAGHIR & Thomas EGUIENTA
 """
 import numpy as np
 from scipy import linalg as LA
 
 
 
-
+#fonction permettant de renvoyer une matrice de taille n*n comportant des nombres entiers aléatoires entre 0 et 100
 def vect_alea(n):
-    A= 101*np.random.rand(n,n)
+    A= 101*np.random.rand(n,n)//1
     return A
 
-A=vect_alea(5)
-print(A)
-
-
+#fonction dont le but est de retourner le déterminant de la matrice donnée en paramètre
 def deter(mat) :
     det=LA.det(mat)
     return det
 
-#def normaliser(v):
 
-
-
+#fonction qui va retourner la matrice d'une base orthonormale dont la famille est donnée en paramètre sous forme de matrice
 def orthonormaliser(mat):
     m,n=mat.shape
     u=[]
@@ -43,23 +38,26 @@ def orthonormaliser(mat):
     return u
 
 
+dim=input("Entrez la dimension de la matrice souhaitée :")
+A=vect_alea(int(dim))
+print("\nLa matrice aléatoire est :\n")
 print(A)
 
-if(deter(A)) : print("La famille est une base")
-else : print("la famille n'est pas une base")
 
+if(deter(A)) : print("\nLa famille est une base.\n")
+else : print("\nLa famille n'est pas une base.\n")
+
+
+
+if(deter(A)):
+    print("La matrice qui représente la base orthonormée est :\n")
+    bon=orthonormaliser(A)
+    for i in range(0,len(bon)) :
+        print(bon[i])
+
+print("\nLa décompsition QR de la matrice est :")
 Q,R=LA.qr(A)
+print("\n Q:\n")
 print(Q)
+print("\nR:\n")
 print(R)
-
-
-
-
-B =  np.array([[2,-2,1], [-2,2,0],[1,1,2]])
-#B =  np.array([[2,-2,1], [-2,2,1],[1,0,2]])
-print(B)
-print(deter(B))
-bon=orthonormaliser(B)
-n=bon
-for i in range(0,len(bon)) :
-    print(bon[i])
